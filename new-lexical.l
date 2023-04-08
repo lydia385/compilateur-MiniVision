@@ -6,6 +6,7 @@
   int  nbligne = 1;
   int  col = 0;
   extern YYSTYPE yylval;
+  // cd /mnt/c/Users/messa/Documents/GitHub/compilateur-MiniVision
   //{bool1}  {yylval.car=atof(yytext); col += yyleng;          return (bool1);}
   //{char1}  {yylval.str=strdup(yytext) col += yyleng; return char1;}
 %}
@@ -26,7 +27,7 @@ comment ^#[^\n]*\n
 %%
 "import" {col+=yyleng; return import;}
 "as"     {col+=yyleng;return as;}
-"matplotlib.pyplot" {col+=yyleng; return mtp;}
+"matplotlib.pyplot" {col+=yyleng; return mpt;}
 "for" {col+=yyleng;return for1;}
 "in"  {col+=yyleng;return in;}
 "range" {col+=yyleng;return range;}

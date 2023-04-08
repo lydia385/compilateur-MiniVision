@@ -518,10 +518,11 @@ char *yytext;
   int  nbligne = 1;
   int  col = 0;
   extern YYSTYPE yylval;
+  // cd /mnt/c/Users/messa/Documents/GitHub/compilateur-MiniVision
   //{bool1}  {yylval.car=atof(yytext); col += yyleng;          return (bool1);}
   //{char1}  {yylval.str=strdup(yytext) col += yyleng; return char1;}
-#line 524 "lex.yy.c"
 #line 525 "lex.yy.c"
+#line 526 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -741,9 +742,9 @@ YY_DECL
 		}
 
 	{
-#line 26 "new-lexical.l"
+#line 27 "new-lexical.l"
 
-#line 747 "lex.yy.c"
+#line 748 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -803,77 +804,77 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 27 "new-lexical.l"
+#line 28 "new-lexical.l"
 {col+=yyleng; return import;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 28 "new-lexical.l"
+#line 29 "new-lexical.l"
 {col+=yyleng;return as;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 29 "new-lexical.l"
-{col+=yyleng; return mtp;}
+#line 30 "new-lexical.l"
+{col+=yyleng; return mpt;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 30 "new-lexical.l"
+#line 31 "new-lexical.l"
 {col+=yyleng;return for1;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 31 "new-lexical.l"
+#line 32 "new-lexical.l"
 {col+=yyleng;return in;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 32 "new-lexical.l"
+#line 33 "new-lexical.l"
 {col+=yyleng;return range;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 33 "new-lexical.l"
+#line 34 "new-lexical.l"
 {col+=yyleng;return numpy;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 34 "new-lexical.l"
+#line 35 "new-lexical.l"
 {col+=yyleng;return and;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 35 "new-lexical.l"
+#line 36 "new-lexical.l"
 {col+=yyleng;return or;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 36 "new-lexical.l"
+#line 37 "new-lexical.l"
 {col+=yyleng;return not;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 37 "new-lexical.l"
+#line 38 "new-lexical.l"
 {col+=yyleng;return if1;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 38 "new-lexical.l"
+#line 39 "new-lexical.l"
 {col+=yyleng;return else1;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 39 "new-lexical.l"
+#line 40 "new-lexical.l"
 {col+=yyleng;return while1;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 40 "new-lexical.l"
+#line 41 "new-lexical.l"
 {col=col+yyleng;  yylval.car=yytext[1];  return Type;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 41 "new-lexical.l"
+#line 42 "new-lexical.l"
 {
             yylval.num=atoi(yytext);
             if ( (yylval.num>-32769)&&(yylval.num<32768)) 
@@ -882,141 +883,141 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 46 "new-lexical.l"
+#line 47 "new-lexical.l"
 {yylval.numf=atof(yytext);  return float1;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 47 "new-lexical.l"
+#line 48 "new-lexical.l"
 {if (yyleng<=8) {yylval.str=strdup(yytext); col += yyleng; return idf;}}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 48 "new-lexical.l"
+#line 49 "new-lexical.l"
 {col+=yyleng;return dpt;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 49 "new-lexical.l"
+#line 50 "new-lexical.l"
 {col+=yyleng;return vrg;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 50 "new-lexical.l"
+#line 51 "new-lexical.l"
 {col+=yyleng;return moins;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 51 "new-lexical.l"
+#line 52 "new-lexical.l"
 {col+=yyleng;return plus;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 52 "new-lexical.l"
+#line 53 "new-lexical.l"
 {col+=yyleng;return eg;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 53 "new-lexical.l"
+#line 54 "new-lexical.l"
 {col+=yyleng;return etoile;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 54 "new-lexical.l"
+#line 55 "new-lexical.l"
 {col+=yyleng;return div1;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 55 "new-lexical.l"
+#line 56 "new-lexical.l"
 {col+=yyleng;return doublediv1;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 56 "new-lexical.l"
+#line 57 "new-lexical.l"
 {col+=yyleng;return modulo;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 57 "new-lexical.l"
+#line 58 "new-lexical.l"
 {col+=yyleng;return infeg;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 58 "new-lexical.l"
+#line 59 "new-lexical.l"
 {col+=yyleng;return inf;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 59 "new-lexical.l"
+#line 60 "new-lexical.l"
 {col+=yyleng;return sup;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 60 "new-lexical.l"
+#line 61 "new-lexical.l"
 {col+=yyleng;return egeg;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 61 "new-lexical.l"
+#line 62 "new-lexical.l"
 {col+=yyleng;return supeg;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 62 "new-lexical.l"
+#line 63 "new-lexical.l"
 {col+=yyleng;return noteg;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 63 "new-lexical.l"
+#line 64 "new-lexical.l"
 {col+=yyleng;return pf;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 64 "new-lexical.l"
+#line 65 "new-lexical.l"
 {col+=yyleng;return pd;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 65 "new-lexical.l"
+#line 66 "new-lexical.l"
 {col+=yyleng;return cd;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 66 "new-lexical.l"
+#line 67 "new-lexical.l"
 {col+=yyleng;return cf;}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 69 "new-lexical.l"
+#line 70 "new-lexical.l"
 {col += yyleng;}
 	YY_BREAK
 case 38:
 /* rule 38 can match eol */
 YY_RULE_SETUP
-#line 70 "new-lexical.l"
+#line 71 "new-lexical.l"
 {printf("\n Comment reconnu \n"); col += yyleng; return (comment);}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 71 "new-lexical.l"
+#line 72 "new-lexical.l"
 {printf("\n point reconnu \n");col++;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 72 "new-lexical.l"
+#line 73 "new-lexical.l"
 { col++;}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 73 "new-lexical.l"
+#line 74 "new-lexical.l"
 {printf("Erreur lexicale au niveau de la ligne %d et colone %d \n",nbligne, col); col++;  }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 74 "new-lexical.l"
+#line 75 "new-lexical.l"
 ECHO;
 	YY_BREAK
-#line 1020 "lex.yy.c"
+#line 1021 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2024,7 +2025,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 74 "new-lexical.l"
+#line 75 "new-lexical.l"
 
 int yywrap(void)
 {

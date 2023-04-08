@@ -83,9 +83,8 @@ int vInt;
 float vFloat;
 char typeidf;
 char tempidf[20];
-FILE *yyin;
 
-#line 89 "syntaxic.tab.c"
+#line 88 "syntaxic.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -130,31 +129,32 @@ enum yysymbol_kind_t
   YYSYMBOL_else1 = 14,                     /* else1  */
   YYSYMBOL_while1 = 15,                    /* while1  */
   YYSYMBOL_Type = 16,                      /* Type  */
-  YYSYMBOL_dpt = 17,                       /* dpt  */
-  YYSYMBOL_vrg = 18,                       /* vrg  */
-  YYSYMBOL_moins = 19,                     /* moins  */
-  YYSYMBOL_plus = 20,                      /* plus  */
-  YYSYMBOL_eg = 21,                        /* eg  */
-  YYSYMBOL_etoile = 22,                    /* etoile  */
-  YYSYMBOL_div1 = 23,                      /* div1  */
-  YYSYMBOL_doublediv1 = 24,                /* doublediv1  */
-  YYSYMBOL_modulo = 25,                    /* modulo  */
-  YYSYMBOL_infeg = 26,                     /* infeg  */
-  YYSYMBOL_inf = 27,                       /* inf  */
-  YYSYMBOL_sup = 28,                       /* sup  */
-  YYSYMBOL_egeg = 29,                      /* egeg  */
-  YYSYMBOL_supeg = 30,                     /* supeg  */
-  YYSYMBOL_noteg = 31,                     /* noteg  */
-  YYSYMBOL_pf = 32,                        /* pf  */
-  YYSYMBOL_pd = 33,                        /* pd  */
-  YYSYMBOL_cd = 34,                        /* cd  */
-  YYSYMBOL_cf = 35,                        /* cf  */
-  YYSYMBOL_idf = 36,                       /* idf  */
-  YYSYMBOL_com = 37,                       /* com  */
-  YYSYMBOL_int1 = 38,                      /* int1  */
-  YYSYMBOL_float1 = 39,                    /* float1  */
-  YYSYMBOL_YYACCEPT = 40,                  /* $accept  */
-  YYSYMBOL_S = 41                          /* S  */
+  YYSYMBOL_comment = 17,                   /* comment  */
+  YYSYMBOL_dpt = 18,                       /* dpt  */
+  YYSYMBOL_vrg = 19,                       /* vrg  */
+  YYSYMBOL_moins = 20,                     /* moins  */
+  YYSYMBOL_plus = 21,                      /* plus  */
+  YYSYMBOL_eg = 22,                        /* eg  */
+  YYSYMBOL_etoile = 23,                    /* etoile  */
+  YYSYMBOL_div1 = 24,                      /* div1  */
+  YYSYMBOL_doublediv1 = 25,                /* doublediv1  */
+  YYSYMBOL_modulo = 26,                    /* modulo  */
+  YYSYMBOL_infeg = 27,                     /* infeg  */
+  YYSYMBOL_inf = 28,                       /* inf  */
+  YYSYMBOL_sup = 29,                       /* sup  */
+  YYSYMBOL_egeg = 30,                      /* egeg  */
+  YYSYMBOL_supeg = 31,                     /* supeg  */
+  YYSYMBOL_noteg = 32,                     /* noteg  */
+  YYSYMBOL_pf = 33,                        /* pf  */
+  YYSYMBOL_pd = 34,                        /* pd  */
+  YYSYMBOL_cd = 35,                        /* cd  */
+  YYSYMBOL_cf = 36,                        /* cf  */
+  YYSYMBOL_idf = 37,                       /* idf  */
+  YYSYMBOL_com = 38,                       /* com  */
+  YYSYMBOL_int1 = 39,                      /* int1  */
+  YYSYMBOL_float1 = 40,                    /* float1  */
+  YYSYMBOL_YYACCEPT = 41,                  /* $accept  */
+  YYSYMBOL_S = 42                          /* S  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -485,7 +485,7 @@ union yyalloc
 #define YYLAST   1
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  40
+#define YYNTOKENS  41
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  2
 /* YYNRULES -- Number of rules.  */
@@ -494,7 +494,7 @@ union yyalloc
 #define YYNSTATES  4
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   294
+#define YYMAXUTOK   295
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -537,14 +537,14 @@ static const yytype_int8 yytranslate[] =
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
       25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
-      35,    36,    37,    38,    39
+      35,    36,    37,    38,    39,    40
 };
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    29,    29
+       0,    28,    28
 };
 #endif
 
@@ -562,9 +562,10 @@ static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "import", "as", "mpt",
   "for1", "in", "range", "numpy", "and", "or", "not", "if1", "else1",
-  "while1", "Type", "dpt", "vrg", "moins", "plus", "eg", "etoile", "div1",
-  "doublediv1", "modulo", "infeg", "inf", "sup", "egeg", "supeg", "noteg",
-  "pf", "pd", "cd", "cf", "idf", "com", "int1", "float1", "$accept", "S", YY_NULLPTR
+  "while1", "Type", "comment", "dpt", "vrg", "moins", "plus", "eg",
+  "etoile", "div1", "doublediv1", "modulo", "infeg", "inf", "sup", "egeg",
+  "supeg", "noteg", "pf", "pd", "cd", "cf", "idf", "com", "int1", "float1",
+  "$accept", "S", YY_NULLPTR
 };
 
 static const char *
@@ -574,7 +575,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#define YYPACT_NINF (-37)
+#define YYPACT_NINF (-38)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -588,7 +589,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-     -36,   -37,     1,   -37
+     -37,   -38,     1,   -38
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -602,7 +603,7 @@ static const yytype_int8 yydefact[] =
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -37,   -37
+     -38,   -38
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -621,20 +622,20 @@ static const yytype_int8 yytable[] =
 
 static const yytype_int8 yycheck[] =
 {
-      36,     0
+      37,     0
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    36,    41,     0
+       0,    37,    42,     0
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    40,    41
+       0,    41,    42
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
@@ -1104,7 +1105,7 @@ yyreduce:
   switch (yyn)
     {
 
-#line 1108 "syntaxic.tab.c"
+#line 1109 "syntaxic.tab.c"
 
       default: break;
     }
@@ -1297,7 +1298,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 30 "syntaxic.y"
+#line 29 "syntaxic.y"
  
 int yyerror(char* msg)
 {printf("%s ligne %d et colonne %d \n",msg,nbligne,col);
@@ -1313,5 +1314,5 @@ yyin = fopen(argv[1], "r");
     }
      display();
 return 0;
-}
 
+}

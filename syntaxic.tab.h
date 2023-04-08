@@ -68,29 +68,30 @@ extern int yydebug;
     else1 = 269,                   /* else1  */
     while1 = 270,                  /* while1  */
     Type = 271,                    /* Type  */
-    dpt = 272,                     /* dpt  */
-    vrg = 273,                     /* vrg  */
-    moins = 274,                   /* moins  */
-    plus = 275,                    /* plus  */
-    eg = 276,                      /* eg  */
-    etoile = 277,                  /* etoile  */
-    div1 = 278,                    /* div1  */
-    doublediv1 = 279,              /* doublediv1  */
-    modulo = 280,                  /* modulo  */
-    infeg = 281,                   /* infeg  */
-    inf = 282,                     /* inf  */
-    sup = 283,                     /* sup  */
-    egeg = 284,                    /* egeg  */
-    supeg = 285,                   /* supeg  */
-    noteg = 286,                   /* noteg  */
-    pf = 287,                      /* pf  */
-    pd = 288,                      /* pd  */
-    cd = 289,                      /* cd  */
-    cf = 290,                      /* cf  */
-    idf = 291,                     /* idf  */
-    com = 292,                     /* com  */
-    int1 = 293,                    /* int1  */
-    float1 = 294                   /* float1  */
+    comment = 272,                 /* comment  */
+    dpt = 273,                     /* dpt  */
+    vrg = 274,                     /* vrg  */
+    moins = 275,                   /* moins  */
+    plus = 276,                    /* plus  */
+    eg = 277,                      /* eg  */
+    etoile = 278,                  /* etoile  */
+    div1 = 279,                    /* div1  */
+    doublediv1 = 280,              /* doublediv1  */
+    modulo = 281,                  /* modulo  */
+    infeg = 282,                   /* infeg  */
+    inf = 283,                     /* inf  */
+    sup = 284,                     /* sup  */
+    egeg = 285,                    /* egeg  */
+    supeg = 286,                   /* supeg  */
+    noteg = 287,                   /* noteg  */
+    pf = 288,                      /* pf  */
+    pd = 289,                      /* pd  */
+    cd = 290,                      /* cd  */
+    cf = 291,                      /* cf  */
+    idf = 292,                     /* idf  */
+    com = 293,                     /* com  */
+    int1 = 294,                    /* int1  */
+    float1 = 295                   /* float1  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -99,14 +100,14 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 19 "syntaxic.y"
+#line 18 "syntaxic.y"
 
 int num;
 float numf;
 char car;
 char* str;
 
-#line 110 "syntaxic.tab.h"
+#line 111 "syntaxic.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

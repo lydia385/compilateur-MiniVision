@@ -22,7 +22,7 @@ float numf;
 char car;
 char* str;
 }  
-%token import as mpt for1 in range numpy and or not if1 else1 while1 Type 
+%token import as mpt for1 in range numpy and or not if1 else1 while1 Type comment
 %token dpt vrg moins plus eg etoile div1 doublediv1 modulo infeg inf sup egeg  supeg noteg pf pd cd cf
 %token <str>idf <str>com <num>int1 <numf>float1
 %%
@@ -42,5 +42,5 @@ yyin = fopen(argv[1], "r");
     }
      display();
 return 0;
-}
 
+}
