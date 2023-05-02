@@ -1,5 +1,5 @@
 
-#line 3 "lex.yy.c"
+#line 2 "lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -351,8 +351,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 42
-#define YY_END_OF_BUFFER 43
+#define YY_NUM_RULES 43
+#define YY_END_OF_BUFFER 44
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -362,15 +362,15 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[108] =
     {   0,
-        0,    0,   43,   41,   37,   42,   40,   41,   26,   34,
-       33,   23,   21,   19,   20,   39,   24,   15,   18,   28,
-       22,   29,   17,   17,   35,   36,   41,   41,   41,   41,
-       41,   41,   41,   41,   41,   41,   32,   15,   25,    0,
-       27,   30,   31,   17,   17,   17,   17,   17,    0,    2,
+        0,    0,   44,   42,   38,   37,   41,   42,   22,   30,
+       29,   19,   17,   15,   16,   40,   20,   34,   14,   24,
+       18,   25,   36,   36,   31,   32,   42,   42,   42,   42,
+       42,   42,   42,   42,   42,   42,   28,   34,   21,    0,
+       23,   26,   27,   36,   36,   36,   36,   36,    0,    2,
         0,    0,   11,    0,    5,    0,    0,    0,    9,    0,
-        0,    0,   38,   16,   17,   17,   17,   17,    8,    0,
-        4,    0,    0,   10,    0,    0,    0,   17,   17,   17,
-       14,   12,    0,    0,    0,    0,    0,   17,    0,    0,
+        0,    0,   39,   35,   36,   36,   36,   36,    8,    0,
+        4,    0,    0,   10,    0,    0,    0,   36,   36,   36,
+       33,   12,    0,    0,    0,    0,    0,   36,    0,    0,
         7,    6,   13,    1,    0,    0,    0,    0,    0,    0,
 
         0,    0,    0,    0,    0,    3,    0
@@ -513,7 +513,7 @@ char *yytext;
 #line 2 "new-lexical.l"
   #include<stdio.h>
   #include<string.h>
-    #include "syntaxic.tab.h" 
+  #include "syn.tab.h" 
 
   int  nbligne = 1;
   int  col = 0;
@@ -521,8 +521,8 @@ char *yytext;
   // cd /mnt/c/Users/messa/Documents/GitHub/compilateur-MiniVision
   //{bool1}  {yylval.car=atof(yytext); col += yyleng;          return (bool1);}
   //{char1}  {yylval.str=strdup(yytext) col += yyleng; return char1;}
+#line 524 "lex.yy.c"
 #line 525 "lex.yy.c"
-#line 526 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -533,7 +533,7 @@ char *yytext;
  */
 #include <unistd.h>
 #endif
-
+    
 #ifndef YY_EXTRA_TYPE
 #define YY_EXTRA_TYPE void *
 #endif
@@ -744,7 +744,7 @@ YY_DECL
 	{
 #line 27 "new-lexical.l"
 
-#line 748 "lex.yy.c"
+#line 747 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -870,154 +870,162 @@ YY_RULE_SETUP
 case 14:
 YY_RULE_SETUP
 #line 41 "new-lexical.l"
-{col=col+yyleng;  yylval.car=yytext[1];  return Type;}
+{col+=yyleng;return dpt;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 42 "new-lexical.l"
-{
-            yylval.num=atoi(yytext);
-            if ( (yylval.num>-32769)&&(yylval.num<32768)) 
-                    {yylval.num=atoi(yytext);col=col+yyleng; return int1;}
-            else printf("erreur lexicale la valeur de l'entier depasse la plage specifiee\n"); return int1;}
+{col+=yyleng;return vrg;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 47 "new-lexical.l"
-{yylval.numf=atof(yytext);  return float1;}
+#line 43 "new-lexical.l"
+{col+=yyleng;return moins;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 48 "new-lexical.l"
-{if (yyleng<=8) {yylval.str=strdup(yytext); col += yyleng; return idf;}}
+#line 44 "new-lexical.l"
+{col+=yyleng;return plus;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 49 "new-lexical.l"
-{col+=yyleng;return dpt;}
+#line 45 "new-lexical.l"
+{col+=yyleng;return eg;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 50 "new-lexical.l"
-{col+=yyleng;return vrg;}
+#line 46 "new-lexical.l"
+{col+=yyleng;return etoile;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 51 "new-lexical.l"
-{col+=yyleng;return moins;}
+#line 47 "new-lexical.l"
+{col+=yyleng;return div1;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 52 "new-lexical.l"
-{col+=yyleng;return plus;}
+#line 48 "new-lexical.l"
+{col+=yyleng;return doublediv1;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 53 "new-lexical.l"
-{col+=yyleng;return eg;}
+#line 49 "new-lexical.l"
+{col+=yyleng;return modulo;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 54 "new-lexical.l"
-{col+=yyleng;return etoile;}
+#line 50 "new-lexical.l"
+{col+=yyleng;return infeg;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 55 "new-lexical.l"
-{col+=yyleng;return div1;}
+#line 51 "new-lexical.l"
+{col+=yyleng;return inf;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 56 "new-lexical.l"
-{col+=yyleng;return doublediv1;}
+#line 52 "new-lexical.l"
+{col+=yyleng;return sup;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 57 "new-lexical.l"
-{col+=yyleng;return modulo;}
+#line 53 "new-lexical.l"
+{col+=yyleng;return egeg;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 58 "new-lexical.l"
-{col+=yyleng;return infeg;}
+#line 54 "new-lexical.l"
+{col+=yyleng;return supeg;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 59 "new-lexical.l"
-{col+=yyleng;return inf;}
+#line 55 "new-lexical.l"
+{col+=yyleng;return noteg;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 60 "new-lexical.l"
-{col+=yyleng;return sup;}
+#line 56 "new-lexical.l"
+{col+=yyleng;return pf;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 61 "new-lexical.l"
-{col+=yyleng;return egeg;}
+#line 57 "new-lexical.l"
+{col+=yyleng;return pd;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 62 "new-lexical.l"
-{col+=yyleng;return supeg;}
+#line 58 "new-lexical.l"
+{col+=yyleng;return cd;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 63 "new-lexical.l"
-{col+=yyleng;return noteg;}
+#line 59 "new-lexical.l"
+{col+=yyleng;return cf;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 64 "new-lexical.l"
-{col+=yyleng;return pf;}
+#line 60 "new-lexical.l"
+{col=col+yyleng;  yylval.car=yytext[1];  return Type;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 65 "new-lexical.l"
-{col+=yyleng;return pd;}
+#line 61 "new-lexical.l"
+{
+            if(atoi(yytext)<-32768||atoi(yytext)>32768){printf("integer invalide");}
+                         else{
+                                yylval.num=atoi(yytext);     
+                                printf("Entite Lexical reconnue" );
+                                col = col + strlen(yytext);
+                                return int1;}}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 66 "new-lexical.l"
-{col+=yyleng;return cd;}
+#line 68 "new-lexical.l"
+{yylval.numf=atof(yytext);  return float1;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 67 "new-lexical.l"
-{col+=yyleng;return cf;}
+#line 69 "new-lexical.l"
+{if (yyleng>=8) {col = col+strlen(yytext);printf("IDF"); return idf;}}
 	YY_BREAK
 case 37:
-YY_RULE_SETUP
-#line 70 "new-lexical.l"
-{col += yyleng;}
-	YY_BREAK
-case 38:
-/* rule 38 can match eol */
+/* rule 37 can match eol */
 YY_RULE_SETUP
 #line 71 "new-lexical.l"
-{printf("\n Comment reconnu \n"); col += yyleng; return (comment);}
+{ return NEWLINE; }
 	YY_BREAK
-case 39:
+case 38:
 YY_RULE_SETUP
 #line 72 "new-lexical.l"
-{printf("\n point reconnu \n");col++;}
+{col += yyleng;}
+	YY_BREAK
+case 39:
+/* rule 39 can match eol */
+YY_RULE_SETUP
+#line 73 "new-lexical.l"
+{printf("\n Comment reconnu \n"); col += yyleng; return (comment);}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 73 "new-lexical.l"
-{ col++;}
+#line 74 "new-lexical.l"
+{printf("\n point reconnu \n");col++;}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 74 "new-lexical.l"
-{printf("Erreur lexicale au niveau de la ligne %d et colone %d \n",nbligne, col); col++;  }
+#line 75 "new-lexical.l"
+{ col++;}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 75 "new-lexical.l"
+#line 76 "new-lexical.l"
+{printf("Erreur lexicale au niveau de la ligne %d et colone %d \n",nbligne, col); col++;  }
+	YY_BREAK
+case 43:
+YY_RULE_SETUP
+#line 77 "new-lexical.l"
 ECHO;
 	YY_BREAK
-#line 1021 "lex.yy.c"
+#line 1028 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2025,7 +2033,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 75 "new-lexical.l"
+#line 77 "new-lexical.l"
 
 int yywrap(void)
 {
