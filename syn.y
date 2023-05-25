@@ -1,6 +1,8 @@
 %{
-#include<stdio.h>
 #include "routines.h"
+   #include<stdio.h>
+   #include<stdlib.h>
+   #include<string.h>
 extern int  nbligne;
 extern int col;
 int yyparse();
@@ -18,36 +20,48 @@ FILE *yyin;
 %union{
     int num;
     float numf;
-    char car;
     char* str;
+    char* car;
 }
-%token import as mpt for1 in range numpy and or not if1 else1 while1 Type comment NEWLINE
+%token import as mpt for1 in range numpy and or not if1 else1 while1 comment NEWLINE sautdligne tabulation
 %token dpt vrg moins plus eg etoile div1 doublediv1 modulo infeg inf sup egeg  supeg noteg pf pd cd cf
-%token <str>idf <str>com <num>int1 <numf>float1 
-%%
-S: ListInstr {printf("programe correct syntaxiquement"); YYACCEPT;};
+%token <str>idf <str>com <num>int1 <numf>float1 <car> char1 bool1 <str>mc_int <str>mc_float <str>mc_bool <str>mc_char
 
-ListInstr: IMPORT 
-          | AFFECTAION 
-          | BOUCLE 
-          | CONDITION 
-          | 
+%right idf sautdligne
+
+%%
+S: ListInstr  {printf("programe correct syntaxiquement"); YYACCEPT;};
+
+SAUT : sautdligne SAUT | sautdligne;
+
+ListInstr: IMPORT S
+          | AFFECTAION S
+          | BOUCLE S
+          | CONDITION S
+          |
           ;
 
-IMPORT: import lib as idf ListInstr {printf("inst2");} ;
-        |import lib ListInstr {printf("lllll");} ;
+IMPORT: import lib as idf IMPORT{printf("IMPORT INST\n");} 
         |
         ;
 lib : numpy|mpt;
 
-AFFECTAION: idf eg operant exarth ListInstr;
+AFFECTAION: TYPE idf eg operant exarth AFFECTAION {printf("Affectation INST\n");}| ;
+
+TYPE:       mc_int 
+            | mc_float
+            | mc_bool 
+            | mc_char ;
 
 operant : idf 
         | value 
         ;
 
 value: int1 {vType='i'; vInt=$1;}
-       |float1{vType='f'; vFloat=$1;};
+       |float1{vType='f'; vFloat=$1;}
+       |char1{vType='c'; }
+       |bool1{vType='b'; }
+       ;
 
 operations : moins
            | etoile
@@ -79,7 +93,7 @@ BOUCLE:  for1 idf in range pd intervale pf dpt ListInstr
             printf("Symentic error : you are trying to assing type %s to %s \n",vType=='i'?"Pint":"Pfloat",$2);
         }
     }
-};
+}
 ;
 intervale :  int1 vrg int1 
             | int1

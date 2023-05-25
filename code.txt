@@ -1,2 +1,1 @@
-for Ijjjjjjjjjjj in range (1,2):
-a=3
+int Sorepokkoegkog = 3

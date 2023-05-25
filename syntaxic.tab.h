@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_YY_SYN_TAB_H_INCLUDED
-# define YY_YY_SYN_TAB_H_INCLUDED
+#ifndef YY_YY_SYNTAXIC_TAB_H_INCLUDED
+# define YY_YY_SYNTAXIC_TAB_H_INCLUDED
 /* Enabling traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -100,7 +100,7 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 2058 of yacc.c  */
-#line 20 "syn.y"
+#line 18 "syntaxic.y"
 
     int num;
     float numf;
@@ -109,7 +109,7 @@ typedef union YYSTYPE
 
 
 /* Line 2058 of yacc.c  */
-#line 113 "syn.tab.h"
+#line 113 "syntaxic.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -132,4 +132,4 @@ int yyparse ();
 #endif
 #endif /* ! YYPARSE_PARAM */
 
-#endif /* !YY_YY_SYN_TAB_H_INCLUDED  */
+#endif /* !YY_YY_SYNTAXIC_TAB_H_INCLUDED  */

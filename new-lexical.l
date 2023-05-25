@@ -7,8 +7,7 @@
   int  col = 0;
   extern YYSTYPE yylval;
   // cd /mnt/c/Users/messa/Documents/GitHub/compilateur-MiniVision
-  //{bool1}  {yylval.car=atof(yytext); col += yyleng;          return (bool1);}
-  //{char1}  {yylval.str=strdup(yytext) col += yyleng; return char1;}
+
 %}
 lettres [a-z]
 lettreM [A-Z]
@@ -16,28 +15,67 @@ chiffres [0-9]
 idf {lettreM}({lettres}|{chiffres})*
 int1  "-"?{chiffres}+
 float1 "-"?({chiffres}+)(".")({chiffres}+)
-char1 ({lettres}|{lettreM}|{chiffres})+
-bool1 "true"|"false"
+char1 \'[^']\'
+bool1 true|false
 nombre {chiffre}+
 Type (Pfloat)|(Pint)|(Pchar)|(Pbool)
+sauteLine \n+
 
 SPACES [ \t]+
 TEXT ({chiffres}|{lettres})
 comment ^#[^\n]*\n
 %%
-"import" {col+=yyleng; return import;}
+"import" {printf("import");col+=yyleng; return import;}
 "as" {col+=yyleng;return as;}
 "matplotlib.pyplot" {col+=yyleng; return mpt;}
 "for" {col+=yyleng;return for1;}
 "in" {col+=yyleng;return in;}
 "range" {col+=yyleng;return range;}
-"numpy" {col+=yyleng;return numpy;}
+"numpy" {printf("numpy"); col+=yyleng;return numpy;}
 "and" {col+=yyleng;return and;}
 "or" {col+=yyleng;return or;}
 "not" {col+=yyleng;return not;}
 "if" {col+=yyleng;return if1;}
 "else" {col+=yyleng;return else1;}
 "while" {col+=yyleng;return while1;}
+"int"    {  yylval.str=strdup(yytext); printf ("ligne %d : mot cle  reconnue est %s \n", nbligne,yytext);col=col+strlen(yytext); return mc_int;} 
+"float"    {  yylval.str=strdup(yytext); printf ("ligne %d : mot cle  reconnue est %s \n", nbligne,yytext);  col=col+strlen(yytext); return mc_float;} 
+"bool"    {  yylval.str=strdup(yytext); printf ("ligne %d : mot cle  reconnue est %s \n", nbligne,yytext);  col=col+strlen(yytext); return mc_bool;} 
+"char"    {  yylval.str=strdup(yytext); printf ("ligne %d : mot cle  reconnue est %s \n", nbligne,yytext);  col=col+strlen(yytext); return mc_char;} 
+{int1} {   
+            if(atoi(yytext)<-32768||atoi(yytext)>32768){printf("integer invalide");}
+                         else{
+                                yylval.num=atoi(yytext);     
+                                printf("Ligne %d  int reconnu %s \n" ,nbligne, yytext ); 
+                                col = col + strlen(yytext);
+                                return int1;}}
+{float1} { 
+            yylval.numf=atof(yytext);
+          printf("Ligne %d  float reconnu %s \n" ,nbligne, yytext );  
+          col = col + strlen(yytext); 
+          return float1;
+        }
+{char1}  {yylval.car=strdup(yytext);
+      printf("Ligne %d char reconnu %s \n" ,nbligne, yytext ); 
+      col = col + strlen(yytext); 
+      return char1;}
+{bool1} {yylval.car=strdup(yytext);
+           printf("ligne %d : boolean reconnu %s \n",nbligne,yytext);
+           col=col+strlen(yytext); 
+           return bool1; }
+
+
+
+{idf} { printf("-------------------------\n");
+        if (yyleng>=8) {
+            col = col+strlen(yytext);
+            printf("IDF");
+            yylval.str=strdup(yytext);									
+						return idf;}
+      }
+
+{sauteLine} { nbligne++;col = 0; return sautdligne;}
+{comment} {printf("\n Comment reconnu \n"); col += yyleng; return (comment);}
 ":" {col+=yyleng;return dpt;}
 "," {col+=yyleng;return vrg;}
 "-" {col+=yyleng;return moins;}
@@ -57,23 +95,8 @@ comment ^#[^\n]*\n
 "(" {col+=yyleng;return pd;}
 "[" {col+=yyleng;return cd;}
 "]" {col+=yyleng;return cf;}
-{Type} {col=col+yyleng;  yylval.car=yytext[1];  return Type;}
-{int1} {
-            if(atoi(yytext)<-32768||atoi(yytext)>32768){printf("integer invalide");}
-                         else{
-                                yylval.num=atoi(yytext);     
-                                printf("Entite Lexical reconnue" );
-                                col = col + strlen(yytext);
-                                return int1;}}
-{float1} {yylval.numf=atof(yytext);  return float1;}
-{idf} {if (yyleng>=8) {col = col+strlen(yytext);printf("IDF"); return idf;}}
-
-\n { return NEWLINE; }
-[\t]     {col += yyleng;}
-{comment} {printf("\n Comment reconnu \n"); col += yyleng; return (comment);}
-"."       {printf("\n point reconnu \n");col++;}
-[ ]       { col++;}
-.         {printf("Erreur lexicale au niveau de la ligne %d et colone %d \n",nbligne, col); col++;  }
+[ \t ] {col = col + strlen(yytext); }
+. printf("Erreur lexicale ligne %d colonne %d sur l'entite %s\n",nbligne,col,yytext);
 %%
 int yywrap(void)
 {
