@@ -35,8 +35,8 @@ SAUT : sautdligne{printf("saut syn\n");}
 
 ListInstr: IMPORT SAUT S
           | AFFECTAION SAUT S
-          | BOUCLE S
-          | CONDITION S
+          | BOUCLE SAUT S
+          | CONDITION SAUT S
           |
           ;
 
@@ -79,26 +79,12 @@ exarth : operations operant exarth
     };
 
 
-BOUCLE:  for1 idf in range pd intervale pf dpt ListInstr 
-{
-    if (search($2)  == NULL)
-    {
-         printf("Symentic error : NON DECLAREE a la ligen %d , la colonne %d\n",nbligne,col);
-    }
-    else {
-
-        if (search($2)->type[1]  != vType)
-        {
-            printf("%c",search($2)->type[0]);
-            printf("Symentic error : you are trying to assing type %s to %s \n",vType=='i'?"Pint":"Pfloat",$2);
-        }
-    }
-}
-;
+BOUCLE:for1 idf in range pd intervale pf dpt SAUT BLOC_INST {printf("boule inst \n");}
+            |;
 intervale :  int1 vrg int1 
-            | int1
-            ;
-
+            | int1;
+BLOC_INST:INST BLOC_INST |  INST |;
+INST:AFFECTAION|IMPORT|BOUCLE|CONDITION;
 
 CONDITION :ListInstr if1 explg ElseCond ListInstr;
 ElseCond: else1 ListInstr 

@@ -1,4 +1,5 @@
-int Sorepokkoegkog = 3
-import numpy as Lffjkfjkerfjp 
-int Schjdfhjdsjj= 
+for Mhhhdhuenjid in range (0,5):
+        import numpy as Mjjddkdwekewfk
+ 
+        
 $
