@@ -25,13 +25,13 @@ SPACES [ \t]+
 TEXT ({chiffres}|{lettres})
 comment ^#[^\n]*\n
 %%
-"import" {printf("import");col+=yyleng; return import;}
+"import" {printf("import\n");col+=yyleng; return import;}
 "as" {col+=yyleng;return as;}
 "matplotlib.pyplot" {col+=yyleng; return mpt;}
 "for" {col+=yyleng;return for1;}
 "in" {col+=yyleng;return in;}
 "range" {col+=yyleng;return range;}
-"numpy" {printf("numpy"); col+=yyleng;return numpy;}
+"numpy" {printf("numpy\n"); col+=yyleng;return numpy;}
 "and" {col+=yyleng;return and;}
 "or" {col+=yyleng;return or;}
 "not" {col+=yyleng;return not;}
@@ -74,7 +74,7 @@ comment ^#[^\n]*\n
 						return idf;}
       }
 
-{sauteLine} { nbligne++;col = 0; return sautdligne;}
+{sauteLine} {printf("saut\n"); nbligne++;col = 0; return sautdligne;}
 {comment} {printf("\n Comment reconnu \n"); col += yyleng; return (comment);}
 ":" {col+=yyleng;return dpt;}
 "," {col+=yyleng;return vrg;}
@@ -95,6 +95,7 @@ comment ^#[^\n]*\n
 "(" {col+=yyleng;return pd;}
 "[" {col+=yyleng;return cd;}
 "]" {col+=yyleng;return cf;}
+"$" {return end;}
 [ \t ] {col = col + strlen(yytext); }
 . printf("Erreur lexicale ligne %d colonne %d sur l'entite %s\n",nbligne,col,yytext);
 %%

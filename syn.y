@@ -24,29 +24,29 @@ FILE *yyin;
     char* car;
 }
 %token import as mpt for1 in range numpy and or not if1 else1 while1 comment NEWLINE sautdligne tabulation
-%token dpt vrg moins plus eg etoile div1 doublediv1 modulo infeg inf sup egeg  supeg noteg pf pd cd cf
+%token dpt vrg moins plus eg etoile div1 doublediv1 modulo infeg inf sup egeg  supeg noteg pf pd cd cf end
 %token <str>idf <str>com <num>int1 <numf>float1 <car> char1 bool1 <str>mc_int <str>mc_float <str>mc_bool <str>mc_char
-
 %right idf sautdligne
 
 %%
-S: ListInstr  {printf("programe correct syntaxiquement"); YYACCEPT;};
+S: ListInstr end{printf("programe correct syntaxiquement"); YYACCEPT;}|{printf("programe correct syntaxiquement"); YYACCEPT;};
 
-SAUT : sautdligne SAUT | sautdligne;
+SAUT : sautdligne{printf("saut syn\n");}
 
-ListInstr: IMPORT S
-          | AFFECTAION S
+ListInstr: IMPORT SAUT S
+          | AFFECTAION SAUT S
           | BOUCLE S
           | CONDITION S
           |
           ;
 
-IMPORT: import lib as idf IMPORT{printf("IMPORT INST\n");} 
+IMPORT: import lib as idf{printf("IMPORT INST\n");} 
         |
         ;
 lib : numpy|mpt;
 
-AFFECTAION: TYPE idf eg operant exarth AFFECTAION {printf("Affectation INST\n");}| ;
+AFFECTAION: TYPE idf eg operant exarth AFFECTAION{printf("Affectation INST\n");}
+            | ;
 
 TYPE:       mc_int 
             | mc_float
@@ -125,12 +125,15 @@ return 0;
 }
 int main(int argc, char *argv[])  {
 yyin = fopen(argv[1], "r");
+    
     if (yyin == NULL)
         printf("File doesn't exist");
     else{
         
         yyparse();
+    
     }
+
      display();
 return 0;
 
