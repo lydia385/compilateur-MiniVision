@@ -25,13 +25,13 @@ SPACES [ \t]+
 TEXT ({chiffres}|{lettres})
 comment ^#[^\n]*\n
 %%
-"import" {printf("import\n");col+=yyleng; return import;}
+"import" {col+=yyleng; return import;}
 "as" {col+=yyleng;return as;}
 "matplotlib.pyplot" {col+=yyleng; return mpt;}
-"for" {col+=yyleng;return for1;}
-"in" {col+=yyleng;return in;}
-"range" {col+=yyleng;return range;}
-"numpy" {printf("numpy\n"); col+=yyleng;return numpy;}
+"for" {printf("for\n"); col+=yyleng;return for1;}
+"in" {printf("in\n");col+=yyleng;return in;}
+"range" {printf("range\n");col+=yyleng;return range;}
+"numpy" {col+=yyleng;return numpy;}
 "and" {col+=yyleng;return and;}
 "or" {col+=yyleng;return or;}
 "not" {col+=yyleng;return not;}
@@ -41,7 +41,9 @@ comment ^#[^\n]*\n
 "int"    {  yylval.str=strdup(yytext); printf ("ligne %d : mot cle  reconnue est %s \n", nbligne,yytext);col=col+strlen(yytext); return mc_int;} 
 "float"    {  yylval.str=strdup(yytext); printf ("ligne %d : mot cle  reconnue est %s \n", nbligne,yytext);  col=col+strlen(yytext); return mc_float;} 
 "bool"    {  yylval.str=strdup(yytext); printf ("ligne %d : mot cle  reconnue est %s \n", nbligne,yytext);  col=col+strlen(yytext); return mc_bool;} 
-"char"    {  yylval.str=strdup(yytext); printf ("ligne %d : mot cle  reconnue est %s \n", nbligne,yytext);  col=col+strlen(yytext); return mc_char;} 
+"char"    {  yylval.str=strdup(yytext); printf ("ligne %d : mot cle  reconnue est %s \n", nbligne,yytext);  col=col+strlen(yytext); return mc_char;}
+[\t]  {printf("\n Sep_tab reconnu \n"); col += yyleng;return (tabulation);}
+
 {int1} {   
             if(atoi(yytext)<-32768||atoi(yytext)>32768){printf("integer invalide");}
                          else{
@@ -66,10 +68,10 @@ comment ^#[^\n]*\n
 
 
 
-{idf} { printf("-------------------------\n");
+{idf} { 
         if (yyleng>=8) {
             col = col+strlen(yytext);
-            printf("IDF");
+            printf("IDF\n");
             yylval.str=strdup(yytext);									
 						return idf;}
       }
@@ -77,6 +79,7 @@ comment ^#[^\n]*\n
 {sauteLine} {printf("saut\n"); nbligne++;col = 0; return sautdligne;}
 {comment} {printf("\n Comment reconnu \n"); col += yyleng; return (comment);}
 ":" {col+=yyleng;return dpt;}
+";" {col+=yyleng;return ptveg;}
 "," {col+=yyleng;return vrg;}
 "-" {col+=yyleng;return moins;}
 "+" {col+=yyleng;return plus;}

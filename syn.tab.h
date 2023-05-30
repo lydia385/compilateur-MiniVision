@@ -83,16 +83,17 @@ extern int yydebug;
      cd = 292,
      cf = 293,
      end = 294,
-     idf = 295,
-     com = 296,
-     int1 = 297,
-     float1 = 298,
-     char1 = 299,
-     bool1 = 300,
-     mc_int = 301,
-     mc_float = 302,
-     mc_bool = 303,
-     mc_char = 304
+     ptveg = 295,
+     idf = 296,
+     com = 297,
+     int1 = 298,
+     float1 = 299,
+     char1 = 300,
+     bool1 = 301,
+     mc_int = 302,
+     mc_float = 303,
+     mc_bool = 304,
+     mc_char = 305
    };
 #endif
 
@@ -110,7 +111,7 @@ typedef union YYSTYPE
 
 
 /* Line 2058 of yacc.c  */
-#line 114 "syn.tab.h"
+#line 115 "syn.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

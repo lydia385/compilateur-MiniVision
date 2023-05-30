@@ -1,5 +1,3 @@
-for Mhhhdhuenjid in range (0,5):
-        import numpy as Mjjddkdwekewfk
- 
-        
+for Xmmkefmmmmmm in range (0,5):
+import numpy as Lppppppppppp
 $

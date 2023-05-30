@@ -24,19 +24,19 @@ FILE *yyin;
     char* car;
 }
 %token import as mpt for1 in range numpy and or not if1 else1 while1 comment NEWLINE sautdligne tabulation
-%token dpt vrg moins plus eg etoile div1 doublediv1 modulo infeg inf sup egeg  supeg noteg pf pd cd cf end
+%token dpt vrg moins plus eg etoile div1 doublediv1 modulo infeg inf sup egeg  supeg noteg pf pd cd cf end ptveg
 %token <str>idf <str>com <num>int1 <numf>float1 <car> char1 bool1 <str>mc_int <str>mc_float <str>mc_bool <str>mc_char
 %right idf sautdligne
+%right tabulation
 
 %%
-S: ListInstr end{printf("programe correct syntaxiquement"); YYACCEPT;}|{printf("programe correct syntaxiquement"); YYACCEPT;};
+S: ListInstr end{printf("programe correct syntaxiquement\n"); YYACCEPT;}|{printf("programe correct syntaxiquement"); YYACCEPT;};
 
-SAUT : sautdligne{printf("saut syn\n");}
+SAUT : sautdligne
 
 ListInstr: IMPORT SAUT S
           | AFFECTAION SAUT S
           | BOUCLE SAUT S
-          | CONDITION SAUT S
           |
           ;
 
@@ -79,15 +79,13 @@ exarth : operations operant exarth
     };
 
 
-BOUCLE:for1 idf in range pd intervale pf dpt SAUT BLOC_INST {printf("boule inst \n");}
-            |;
-intervale :  int1 vrg int1 
-            | int1;
-BLOC_INST:INST BLOC_INST |  INST |;
-INST:AFFECTAION|IMPORT|BOUCLE|CONDITION;
+BOUCLE:for1 idf in range pd intervale pf dpt SAUT listeinst SAUT ;
+intervale:int1 vrg int1 
+          |int1;
 
-CONDITION :ListInstr if1 explg ElseCond ListInstr;
-ElseCond: else1 ListInstr 
+listeinst : IMPORT SAUT listeinst | AFFECTAION SAUT listeinst |;
+CONDITION : if1 explg dpt SAUT listeinst SAUT ElseCond listeinst SAUT  { printf("IF inst \n"); };
+ElseCond: else1 dpt listeinst 
     | ;
 explg : pd explg pf
     | noteg pd explg pf
@@ -102,7 +100,6 @@ cmpType: sup
     | inf 
     | egeg 
     | in;
-
 %%
 
 int yyerror(char* msg)
